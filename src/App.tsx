@@ -24,7 +24,7 @@ function App() {
       }
 
       const total = await (await db).count("cats");
-      const lastFact = await (await db).get("cats", total - 1);
+      const lastFact = await (await db).get("cats", total);
 
       setFact(lastFact?.fact || "");
       setLoading(false);
@@ -36,10 +36,6 @@ function App() {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOnline]);
-
-  useEffect(() => {
-    console.log(fact);
-  }, [fact]);
 
   return (
     <div className="App">
