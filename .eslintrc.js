@@ -7,6 +7,7 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
+    project: "./tsconfig.json",
   },
   settings: {
     react: {
@@ -16,13 +17,15 @@ module.exports = {
       "@typescript-eslint/parser": [".ts", ".tsx"],
     },
     "import/resolver": {
-      node: {
-        paths: ["src"],
-        extensions: [".js", ".jsx", ".ts", ".tsx"],
-      },
-      typescript: {
-        alwaysTryTypes: true,
-      },
+      // node: {
+      //   paths: ["src"],
+      //   extensions: [".js", ".jsx", ".ts", ".tsx"],
+      // },
+      // "import/resolver": {
+      //   typescript: {
+      //     alwaysTryTypes: true,
+      //   },
+      // },
     },
   },
   env: {
@@ -33,12 +36,18 @@ module.exports = {
   extends: [
     "eslint:recommended",
     "airbnb",
+    "airbnb-typescript",
     "airbnb/hooks",
+    "plugin:import/typescript",
+    "plugin:@typescript-eslint/recommended",
+    // "prettier",
+    // "prettier/@typescript-eslint", // not related to this problem but it helps
+    // "prettier/react",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:prettier/recommended", // Make sure this is always the last element in the array.
   ],
-  plugins: ["simple-import-sort", "prettier", "import"],
+  plugins: ["import", "@typescript-eslint", "simple-import-sort", "prettier"],
   rules: {
     "prettier/prettier": "error",
     "react/react-in-jsx-scope": "off",
@@ -60,10 +69,7 @@ module.exports = {
     "import/extensions": [
       "error",
       "ignorePackages",
-      {
-        ts: "never",
-        tsx: "never",
-      },
+      { js: "never", jsx: "never", ts: "never", tsx: "never" },
     ],
   },
 };

@@ -6,9 +6,10 @@ import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
   plugins: [
-    react(),
-    tsconfigPaths(),
     VitePWA({
+      mode: "development",
+      base: "/",
+      registerType: "autoUpdate",
       includeAssets: [
         "icons/favicon.ico",
         "icons/apple-touch-icon.png",
@@ -21,17 +22,17 @@ export default defineConfig({
         short_name: "Cat Fact",
         icons: [
           {
-            src: "android-chrome-192x192.png",
+            src: "icons/android-chrome-192x192.png",
             sizes: "192x192",
             type: "image/png",
           },
           {
-            src: "android-chrome-512x512.png",
+            src: "icons/android-chrome-512x512.png",
             sizes: "512x512",
             type: "image/png",
           },
           {
-            src: "android-chrome-512x512.png",
+            src: "icons/android-chrome-512x512.png",
             sizes: "512x512",
             purpose: "any maskable",
           },
@@ -40,6 +41,12 @@ export default defineConfig({
         background_color: "#ffffff",
         display: "standalone",
       },
+      devOptions: {
+        enabled: true,
+        type: "module",
+      },
     }),
+    react(),
+    tsconfigPaths(),
   ],
 });
